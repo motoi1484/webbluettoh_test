@@ -38,7 +38,7 @@ function connect() {
   //options.acceptAllDevices = true;
   options.filters = [
     {services: [LED_SERVICE_UUID]},
-    //{optionalServices: [ACCELEROMETER_SERVICE_UUID]},
+    {optionalServices: [ACCELEROMETER_SERVICE_UUID]},
     {namePrefix: "BBC micro:bit"}
   ];
 
