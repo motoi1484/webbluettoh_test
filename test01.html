@@ -99,6 +99,17 @@ function disconnect() {
   bluetoothDevice.gatt.disconnect();
   alert("BLE接続を切断しました。")
 }
+	
+function accelerometerChanged(event)
+{
+	// 加速度X座標
+	let accelX = event.target.value.getInt16(0, true)/1000.0;
+	// 加速度Y座標
+	let accelY = event.target.value.getInt16(2, true)/1000.0;
+	// 加速度Z座標
+	let accelZ = event.target.value.getInt16(4, true)/1000.0;
+	
+}
 </script>
 </body>
 </html>
