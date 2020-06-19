@@ -110,6 +110,7 @@ function accelerometerChanged(event)
 	let accelZ = event.target.value.getInt16(4, true)/1000.0;
 	
 	document.querySelector("#accelx").value = accelX;
+	document.querySelector("#accely").value = accelY;
 }
 </script>
 </body>
