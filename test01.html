@@ -56,13 +56,6 @@ function connect() {
     alert("BLE接続が完了しました。");
     characteristic = chara;
   })
-  // 加速度が変化したら指定したメソッドを呼び出す
-	.then(characteristic => {
-		console.log(characteristic);
-		characteristic.startNotifications();
-		characteristic.addEventListener('characteristicvaluechanged', accelerometerChanged);
-  .catch(error => {
-    console.log(error);
   });
 }
 
