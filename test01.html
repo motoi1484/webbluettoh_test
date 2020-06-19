@@ -48,6 +48,22 @@ function connect() {
     console.log("device", device);
     return device.gatt.connect();
   })
+  // 加速度センササービスを取得する
+	.then(server => {
+		console.log(server);
+		return server.getPrimaryService(ACCELEROMETER_SERVICE_UUID);
+	})
+	// キャラクタリスティックを取得する
+	.then(service => {
+		console.log(service);
+		return service.getCharacteristic(ACCELEROMETER_CHARACTERISTICS_UUID);
+	})
+	// 加速度が変化したら指定したメソッドを呼び出す
+	.then(characteristic => {
+		console.log(characteristic);
+		characteristic.startNotifications();
+		characteristic.addEventListener('characteristicvaluechanged', accelerometerChanged);
+    
   .then(server =>{
     console.log("server", server)
     return server.getPrimaryService(LED_SERVICE_UUID);
