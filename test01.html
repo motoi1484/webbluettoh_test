@@ -63,6 +63,7 @@ function connect() {
 		console.log(characteristic);
 		characteristic.startNotifications();
 		characteristic.addEventListener('characteristicvaluechanged', accelerometerChanged);
+  	})
     
   .then(server =>{
     console.log("server", server)
