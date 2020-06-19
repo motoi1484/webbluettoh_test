@@ -56,6 +56,11 @@ function connect() {
     alert("BLE接続が完了しました。");
     characteristic = chara;
   })
+  // 加速度が変化したら指定したメソッドを呼び出す
+	.then(characteristic => {
+		console.log(characteristic);
+		characteristic.startNotifications();
+		characteristic.addEventListener('characteristicvaluechanged', accelerometerChanged);
   .catch(error => {
     console.log(error);
   });
@@ -75,6 +80,24 @@ function disconnect() {
   bluetoothDevice.gatt.disconnect();
   alert("BLE接続を切断しました。")
 }
+  
+/* -----------------------------------------------
+ * 加速度センサの値が変化したら呼び出される
+----------------------------------------------- */
+function accelerometerChanged(event)
+{
+	// 加速度X座標
+	let accelX = event.target.value.getInt16(0, true)/1000.0;
+	// 加速度Y座標
+	let accelY = event.target.value.getInt16(2, true)/1000.0;
+	// 加速度Z座標
+	let accelZ = event.target.value.getInt16(4, true)/1000.0;
+  
+  document.querySelector("#accelx").value = accelX;
+  document.querySelector("#accely").value = accelY;
+  
+}
+  
 </script>
 </body>
 </html>
