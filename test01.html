@@ -10,7 +10,7 @@
 <button id="disconnect">切断</button>
 <input id="message" value="hello" />
   <input id="accelx" value=0 />
-  <input id="accely" value=1 />
+  <input id="accely" value=0 />
 <button id="send">送信</button>
 
 <script src="//cdnjs.cloudflare.com/ajax/libs/d3/4.3.0/d3.min.js"></script>
@@ -38,7 +38,7 @@ function connect() {
   //options.acceptAllDevices = true;
   options.filters = [
     {services: [LED_SERVICE_UUID]},
-    optionalServices: [ACCELEROMETER_SERVICE_UUID],
+    //optionalServices: [ACCELEROMETER_SERVICE_UUID],
     {namePrefix: "BBC micro:bit"}
   ];
 
